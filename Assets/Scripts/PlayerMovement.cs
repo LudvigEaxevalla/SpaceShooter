@@ -24,7 +24,17 @@ public class PlayerMovement : MonoBehaviour
             transform.Translate(Vector3.right * playerSpeed * Time.deltaTime);
         }
 
+        if (transform.position.x == -12)
+        {
+            transform.position.x = 12;
+        }
 
+
+        else if (transform.position.x == 12)
+        {
+            transform.position.x = -12;
+        }
+        
 
     }
 }
