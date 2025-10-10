@@ -4,6 +4,7 @@ using UnityEngine.UIElements;
 public class PlayerMovement : MonoBehaviour
 {
     public int playerSpeed = 5;
+    public GameObject projectile;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,17 +25,21 @@ public class PlayerMovement : MonoBehaviour
             transform.Translate(Vector3.right * playerSpeed * Time.deltaTime);
         }
 
-        if (transform.position.x == -12)
+        if (transform.position.x <= -10)
         {
-            transform.position.x = 12;
+            transform.position = new Vector3(10, transform.position.y, transform.position.z);
         }
 
 
-        else if (transform.position.x == 12)
+        else if (transform.position.x >= 10)
         {
-            transform.position.x = -12;
+            transform.position = new Vector3(-10, transform.position.y, transform.position.z);
         }
         
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(projectile, this.transform.position, this.transform.rotation);
+        }
 
     }
 }
