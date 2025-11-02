@@ -4,6 +4,7 @@ using UnityEngine.UIElements;
 public class PlayerMovement : MonoBehaviour
 {
     public int playerSpeed = 5;
+    public int playerHealth = 3;
     public GameObject projectile;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -41,5 +42,13 @@ public class PlayerMovement : MonoBehaviour
             Instantiate(projectile, this.transform.position, this.transform.rotation);
         }
 
+    }
+
+    public void TakeDamage()
+    {
+        playerHealth--;
+        if (playerHealth <= 0) {
+            Destroy(gameObject);
+        }
     }
 }

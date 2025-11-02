@@ -23,5 +23,20 @@ public class enemyScript : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+
+        if (other.tag == "Player")
+        {
+            other.transform.GetComponent<PlayerMovement>().TakeDamage();
+            Debug.Log("Hit: " + other);
+        }
+
+        if (other.tag == "Bullet")
+        {
+            Destroy(gameObject);
+        }
+    }
+
 
 }
