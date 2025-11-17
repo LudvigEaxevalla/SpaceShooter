@@ -6,11 +6,13 @@ public class PlayerMovement : MonoBehaviour
     public int playerSpeed = 5;
     public int playerHealth = 3;
     public GameObject projectile;
+    public UIScript healthText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         transform.position = new Vector3(0, -4, 0);
+        healthText = GameObject.Find("Health").GetComponent<UIScript>();
 
     }
 
@@ -47,7 +49,8 @@ public class PlayerMovement : MonoBehaviour
     public void TakeDamage()
     {
         playerHealth--;
-        if (playerHealth <= 0) {
+        if (playerHealth <= 0)
+        {
             Destroy(gameObject);
         }
     }

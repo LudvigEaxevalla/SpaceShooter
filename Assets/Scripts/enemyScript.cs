@@ -7,22 +7,19 @@ public class enemyScript : MonoBehaviour
 {
     public float enemySpeed = 3f;
     public enemySpawner spawner;
-    public canvasScript Canvas;
-    public Text scoreText;
-    public int playerScore = 0;
+    private UIScript scoreText;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         spawner = GameObject.Find("Enemy Spawner").GetComponent<enemySpawner>();
-        scoreText = GetComponent<Text>();
+        scoreText = GameObject.Find("Score").GetComponent<UIScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        scoreText.text = playerScore.ToString();
         transform.Translate(Vector3.down * enemySpeed * Time.deltaTime);
 
         if (transform.position.y <= -5) {
@@ -48,7 +45,7 @@ public class enemyScript : MonoBehaviour
         {
             Destroy(other.gameObject);
             spawner.enemyCounter--;
-            playerScore++;
+            scoreText.ScoreUpdate(1);
             Destroy(gameObject);
         }
     }
