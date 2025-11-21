@@ -6,13 +6,17 @@ public class PlayerMovement : MonoBehaviour
     public int playerSpeed = 5;
     public int playerHealth = 3;
     public GameObject projectile;
-    public UIScript healthText;
+    public GameObject Health1;
+    public GameObject Health2;
+    public GameObject Health3;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         transform.position = new Vector3(0, -4, 0);
-        healthText = GameObject.Find("Health").GetComponent<UIScript>();
+        Health1 = GameObject.Find("Health");
+        Health2 = GameObject.Find("Health (1)");
+        Health3 = GameObject.Find("Health (2)");
 
     }
 
@@ -52,6 +56,17 @@ public class PlayerMovement : MonoBehaviour
         if (playerHealth <= 0)
         {
             Destroy(gameObject);
+            Health1.GetComponent<UIScript>().HealthUpdate();
+        }
+
+        if (playerHealth == 1)
+        {
+            Health2.GetComponent<UIScript>().HealthUpdate();
+        }
+
+        if (playerHealth == 2)
+        {
+            Health3.GetComponent<UIScript>().HealthUpdate();
         }
     }
 }
