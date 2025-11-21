@@ -48,6 +48,12 @@ public class enemyScript : MonoBehaviour
             scoreText.ScoreUpdate(1);
             Destroy(gameObject);
         }
+
+        if (other.tag == "Shield")
+        {
+            other.transform.GetComponent<shieldScript>().ShieldDamage();
+            Destroy(gameObject);
+        }
     }
 
 

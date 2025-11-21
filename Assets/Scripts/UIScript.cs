@@ -14,8 +14,17 @@ public class UIScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        text.text = "Score: " + playerScore;
-        h_Image = GetComponent<Image>();
+        if (text != null)
+        {
+            text.text = "Score: " + playerScore;
+        }
+
+       
+
+        if (h_Image != null )
+        {
+            h_Image = GetComponent<Image>();
+        }
 
     }
 
